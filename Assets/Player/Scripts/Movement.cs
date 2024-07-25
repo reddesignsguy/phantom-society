@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
 
     private int getDirFromPolar(int polar, bool getHorizontal)
     {
-        int dir = -1;
+        int dir;
         if (getHorizontal)
             dir = polar == 1 ? 1 : 3;
         else
