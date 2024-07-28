@@ -31,23 +31,37 @@ namespace BehaviorTree
 
             Node root =
                 new Randomizer(new List<Node>() {
-                    //new RepeatDecorator(3, new List<Node>() {
-                    //    new Sequence(new List<Node>()
-                    //    {
-                    //        new Rest(1.0f),
-                    //        new LookAtTarget(_animator, _transform, _target.transform, _shadowChargeLeftOverDistance),
-                    //        new ShadowDash(_transform, _rigidbody),
+                    // Shadow dash
+                    new Sequence(new List<Node>
+                    {
+                        new TeleportAroundTarget(_rigidbody, _targetRadiusAroundPlayer, _target.transform),
+                        new RepeatDecorator(3, new List<Node>() {
+                            new Sequence(new List<Node>()
+                            {
+                                new Rest(1.0f),
+                                new LookAtTarget(_animator, _transform, _target.transform, _shadowChargeLeftOverDistance),
+                                new Rest(0.02f),
+                                new ShadowDash(_transform, _rigidbody),
+                            })
+                         }),
+                        new Rest(1.0f)
+                    }),
 
-                    //    })
-                    //}),
+                    // Ranged shadow slash
                     new Sequence(new List<Node>()
                     {
                         new TeleportAroundTarget(_rigidbody, _targetRadiusAroundPlayer, _target.transform),
-                        new Rest(2.0f),
-                        new RangedShadowSlash(_transform, _target.transform),
-                        new Rest(2.0f),
+                        new Rest(0.1f),
+                        new RepeatDecorator(5, new List<Node>() {
+                            new Sequence(new List<Node>()
+                            {
+                                new RangedShadowSlash(_transform, _target.transform),
+                                new Rest(0.3f)
+                            })
+                        }),
+                        new Rest(1.0f),
                     })
-                });; ;
+                });
      
             return root;
         }
