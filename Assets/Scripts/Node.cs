@@ -38,7 +38,7 @@ namespace BehaviorTree
         }
 
         public virtual NodeState Evaluate() => NodeState.FAILURE;
-        public virtual void resetState() { _state = default(NodeState); }
+        public virtual void resetState() { setState(default(NodeState)); }
 
         public static void setData(string key, object value)
         {
