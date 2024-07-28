@@ -15,22 +15,22 @@ namespace BehaviorTree
             _transform = transform;
             _targetTransform = targetTransform;
             _shadowSlashProjectile = GameObject.Find("ShadowSlashProjectile");
-
         }
 
         public override NodeState Evaluate()
         {
-            Quaternion quat = new Quaternion(0.5f, 0.5f , 0, 1); // random rotation
+
+            Vector3 spawnPos = _transform.position;
+            Vector3 dirToTarget = (_targetTransform.position - spawnPos).normalized;
+            Quaternion rotationPointingToTarget = Quaternion.LookRotation(Vector3.forward , dirToTarget);
+            rotationPointingToTarget *= Quaternion.Euler(0, 0, -90);
 
             // Instantiate the projectile object from pool
-            Vector3 spawnPos = _transform.position;
-            GameObject obj = ObjectPoolManager.spawnObject(_shadowSlashProjectile, spawnPos, quat);
-
+            GameObject obj = ObjectPoolManager.spawnObject(_shadowSlashProjectile, spawnPos, rotationPointingToTarget);
+            
             // Make projectile move
             Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-            Vector3 vel = (_targetTransform.position - spawnPos).normalized;
-            vel *= GhoulBT._rangedShadowSlashSpeed;
-
+            Vector3 vel = dirToTarget * GhoulBT._rangedShadowSlashSpeed;
             rb.velocity = vel;
 
             return success();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float _timeToLive = 10f;
+    public float _timeToLive = 5f;
 
     private Coroutine _returnToPoolTimerCoroutine;
 
@@ -23,7 +23,6 @@ public class Projectile : MonoBehaviour
             yield return null;
         }
 
-        print("10 seconds is up!");
         ObjectPoolManager.returnObjectToPool(gameObject);
     }
 }
