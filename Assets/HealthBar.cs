@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     [SerializeField] private Image _fillImage;
 
-    [SerializeField] private  TextMeshProUGUI _text;
+    [SerializeField] private  TMP_Text _text;
 
     public void setInitialHealth(int maxHealth)
     {
@@ -21,10 +21,10 @@ public class HealthBar : MonoBehaviour
     public void updateHealth(int health)
     {
         _healthBar.value = health;
-        updateHealth(health);
+        updateText(health);
     }
 
-    public void updateText(int health)
+    private void updateText(int health)
     {
         string newHealth = health + "/" + _healthBar.maxValue;
         _text.text = newHealth;

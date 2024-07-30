@@ -8,20 +8,26 @@ public class Player : MonoBehaviour
     [SerializeField] private int _health;
 
     public HealthBar _healthBar;
+	private Rigidbody2D _rb;
+	private BoxCollider2D _collider;
+	
 
 	// Use this for initialization
 	void Start()
 	{
 		_health = _maxHealth;
         _healthBar.setInitialHealth(_maxHealth);
+		_rb = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<BoxCollider2D>();
     }
 
-
-	// Update is called once per frame
-	void Update()
+	public void depleteHealth(int val)
 	{
-        //_healthBar.updateHealth(_health);
-		
-	}
+		_health -= val;
+
+		_healthBar.updateHealth(_health);
+    }
+	
+
 }
 

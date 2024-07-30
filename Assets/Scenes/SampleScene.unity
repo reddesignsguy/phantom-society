@@ -282,7 +282,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -451,6 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 0}
   _fillImage: {fileID: 0}
+  _text: {fileID: 0}
 --- !u!1 &518513609
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,7 +588,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -652,8 +653,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000064373, y: 3.29}
-  m_SizeDelta: {x: 61.9116, y: 12.559}
+  m_AnchoredPosition: {x: -0.0000066757, y: 3.6}
+  m_SizeDelta: {x: 87.2307, y: 12.559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650431918
 MonoBehaviour:
@@ -675,7 +676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12/12
+  m_text: 100/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -851,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7286d356dbc4490fa349e9a0ec91576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 128665075}
   _timeToLive: 5
 --- !u!61 &823297981
 BoxCollider2D:
@@ -1098,7 +1100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -161.5374, y: -174.78781}
+  m_AnchoredPosition: {x: -153, y: -176}
   m_SizeDelta: {x: 437.4449, y: 65.5114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325896886
@@ -1166,6 +1168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1325896886}
   _fillImage: {fileID: 984833883}
+  _text: {fileID: 650431918}
 --- !u!1 &1630255057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,11 +1282,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102762558}
+  - component: {fileID: 2102762559}
+  - component: {fileID: 2102762560}
   - component: {fileID: 2102762557}
   - component: {fileID: 2102762556}
   - component: {fileID: 2102762555}
   - component: {fileID: 2102762554}
-  - component: {fileID: 2102762559}
   m_Layer: 0
   m_Name: Ghoul
   m_TagString: Untagged
@@ -1464,6 +1468,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 128665068}
+--- !u!114 &2102762560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102762553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c09dc5896ed424f80168970164fba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 128665075}
+  _shadowDashDamage: 10
 --- !u!1 &2132208230
 GameObject:
   m_ObjectHideFlags: 0
