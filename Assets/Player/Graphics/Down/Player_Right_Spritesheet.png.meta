@@ -3,7 +3,7 @@ guid: 1083e9b3b4d484b11b04a7bee3e24ae7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -115,11 +115,11 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 29
+        width: 22
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 7, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -136,11 +136,11 @@ TextureImporter:
         serializedVersion: 2
         x: 31
         y: 0
-        width: 26
+        width: 23
         height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 3, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

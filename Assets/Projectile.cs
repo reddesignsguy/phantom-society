@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private Player _player;
     public float _timeToLive = 5f;
 
     private Coroutine _returnToPoolTimerCoroutine;
@@ -24,5 +25,14 @@ public class Projectile : MonoBehaviour
         }
 
         ObjectPoolManager.returnObjectToPool(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            _player.depleteHealth(5);
+            ObjectPoolManager.returnObjectToPool(gameObject);
+        }
     }
 }

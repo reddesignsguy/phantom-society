@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     private DefaultPlayerActions _defaultPlayerActions;
     private InputAction _moveAction;
+    private InputAction _attackAction;
 
     private Rigidbody2D _rigidBody;
 
@@ -17,15 +18,25 @@ public class Movement : MonoBehaviour
     private Vector2 _moveDir;
     private int _lookDir;
 
+    // States
+    private bool _attacking = false;
+    private GameObject _attackArea;
+    private float _attackingTimer = 0;
+    private float _attackTime = 0.25f;
+
     // Settings
     public float _speed = 350;
+
 
     private void Awake()
     {
         _defaultPlayerActions = new DefaultPlayerActions();
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _attackArea = transform.GetChild(2).gameObject;
     }
+
+
 
     private void OnEnable()
     {
@@ -35,9 +46,11 @@ public class Movement : MonoBehaviour
         _defaultPlayerActions.Player.Jump.performed += OnJump; // Assigns a listener to the event w/ a callback
         _defaultPlayerActions.Player.Jump.Enable();
 
+        _attackAction = _defaultPlayerActions.Player.Fire;
+        _attackAction.Enable();
+        _attackAction.performed += OnAttack;
+
         _moveAction.performed += OnMove;
-
-
     }
 
     private void OnDisable()
@@ -45,6 +58,7 @@ public class Movement : MonoBehaviour
 
         _moveAction.Disable();
         _defaultPlayerActions.Player.Jump.Disable();
+        _attackAction.Enable();
 
     }
 
@@ -87,7 +101,34 @@ public class Movement : MonoBehaviour
                 _lookDir = getDirFromPolar(Mathf.RoundToInt(newHoriz), true);
         }
 
+        UpdateAttackSettings();
+
         _animator.SetInteger("dir", _lookDir);
+    }
+
+    private void UpdateAttackSettings()
+    {
+        switch (_lookDir)
+        {
+            case 0:
+                _attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
+                break;
+            case 1:
+                _attackArea.transform.rotation = Quaternion.Euler(0, 0, 90);
+                break;
+            case 2:
+                _attackArea.transform.rotation = Quaternion.Euler(0, 0, 180);
+                break;
+            case 3:
+                _attackArea.transform.rotation = Quaternion.Euler(0, 0, 270);
+                break;
+        }
+    }
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        _attacking = true;
+        _attackArea.SetActive(_attacking);
     }
 
     private int getDirFromPolar(int polar, bool getHorizontal)
@@ -109,17 +150,21 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Update direction
         Vector2 newDir = _moveAction.ReadValue<Vector2>();
-        //_lookDir = getLookDir(_moveDir, newDir);
-
         _moveDir = newDir;
 
-        //if (_moveDir.y < 0)
-        //{
-        //    _animation.Play();
-        //}
+        if (_attacking)
+        {
+            _attackingTimer += Time.deltaTime;
 
+            if (_attackingTimer > _attackTime)
+            {
+                _attacking = false;
+                _attackArea.SetActive(false);
+                _attackingTimer = 0;
+            }
+        }
     }
 
     private void FixedUpdate()

@@ -18,17 +18,20 @@ namespace BehaviorTree
         private Animator _animator;
         private Transform _transform;
         private Rigidbody2D _rigidbody;
+        private BoxCollider2D _collider;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _transform = GetComponent<Transform>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<BoxCollider2D>();
+
+            _collider.enabled = false;
         }
 
         protected override Node SetupTree()
         {
-
             Node root =
                 new Randomizer(new List<Node>() {
                     // Shadow dash
@@ -41,7 +44,7 @@ namespace BehaviorTree
                                 new Rest(1.0f),
                                 new LookAtTarget(_animator, _transform, _target.transform, _shadowChargeLeftOverDistance),
                                 new Rest(0.02f),
-                                new ShadowDash(_transform, _rigidbody),
+                                new ShadowDash(_transform, _rigidbody, _collider),
                             })
                          }),
                         new Rest(1.0f)
