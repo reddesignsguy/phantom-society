@@ -1,5 +1,5 @@
-## Phantom Syndicate
-### Ongoing project for the Pirate Software game jam: https://itch.io/jam/pirate
+## Phantom Syndicate ( Submission for the Pirate Software game jam )
+### Play here: [https://itch.io/jam/pirate](https://vexeo.itch.io/ghoul-society)
 
 #### Game Design Doc: https://docs.google.com/document/d/1xE5GJPeCTVUI_GZD-hAA7QwWHBqJOaWHoe64bl7jumo/edit?usp=sharing
 _________
