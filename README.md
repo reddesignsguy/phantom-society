@@ -1,9 +1,15 @@
 ## Phantom Syndicate ( Submission for the Pirate Software game jam )
 ### Play here: [https://itch.io/jam/pirate](https://vexeo.itch.io/ghoul-society)
-
 #### Game Design Doc: https://docs.google.com/document/d/1xE5GJPeCTVUI_GZD-hAA7QwWHBqJOaWHoe64bl7jumo/edit?usp=sharing
+#### Gameplay:
+
+https://github.com/user-attachments/assets/2c2c582e-bca8-4217-a85b-9a68df6c36d5
+
+![Jul-28-2024 14-35-44](https://github.com/user-attachments/assets/94597394-da55-4edf-9014-c597605518be)
 _________
 #### What's this game about? 
+
+
 
 You work for the Ghoul government. A peace treaty was signed between the Ghoul Society and human civilization. As per the treaty, ghouls are forbidden from transforming into and disguising as humans; however, some ghouls have broken this law and rebelled by secretly killing humans by disguising as them. This caused outrage and retaliation by especially right-winged humans, who are thirsty for vengeance against ghouls. You must find the rebelling ghouls and kill them while surviving ghoul discrimination and hate crimes by humans.
 
