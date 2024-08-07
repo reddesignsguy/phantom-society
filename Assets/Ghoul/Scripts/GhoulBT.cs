@@ -27,7 +27,7 @@ namespace BehaviorTree
             _rigidbody = GetComponent<Rigidbody2D>();
             _collider = GetComponent<BoxCollider2D>();
 
-            _collider.enabled = false;
+            _collider.enabled = true;
         }
 
         protected override Node SetupTree()
