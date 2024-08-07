@@ -34,6 +34,7 @@ public class Movement : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _attackArea = transform.GetChild(2).gameObject;
+        _attackArea.SetActive(_attacking);
     }
 
 
@@ -155,7 +156,7 @@ public class Movement : MonoBehaviour
         _moveDir = newDir;
 
         if (_attacking)
-        {
+        { 
             _attackingTimer += Time.deltaTime;
 
             if (_attackingTimer > _attackTime)
